@@ -20,6 +20,7 @@ const useStyles = makeStyles({
     color: "white",
     height: 48,
     padding: "0 30px",
+    marginTop: "5%",
   },
 });
 function App() {
@@ -27,6 +28,7 @@ function App() {
   const [err1, setErr1] = useState(true);
   const [weather, setWeather] = useState({});
   const classes = useStyles();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(loc);
@@ -64,13 +66,18 @@ function App() {
               setLoc(e.target.value);
             }}
           ></TextField>
-          <Button className={classes.root} type="submit">
+          <Button className={classes.root} type="submit" size="large">
             Submit
           </Button>
         </form>
       </Container>
+
       <Container>
-        <WeatherCard weather={weather} err1={err1} />
+        {Object.keys(weather).length !== 0 ? (
+          <WeatherCard weather={weather} err1={err1} />
+        ) : (
+          ""
+        )}
       </Container>
     </Container>
   );
