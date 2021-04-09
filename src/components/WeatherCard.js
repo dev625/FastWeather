@@ -1,12 +1,8 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Card, CardContent } from "@material-ui/core";
-import { Button, Typography, CardHeader } from "@material-ui/core";
-import {
-  createMuiTheme,
-  makeStyles,
-  ThemeProvider,
-} from "@material-ui/core/styles";
-import { WatchLater } from "@material-ui/icons";
+import { Container } from "@material-ui/core";
+import { makeStyles } from "@material-ui/core/styles";
+import { Alert, AlertTitle } from "@material-ui/lab";
 
 const useStyles = makeStyles({
   text: {
@@ -22,7 +18,14 @@ const useStyles = makeStyles({
 const WeatherCard = ({ weather, err1 }) => {
   const classes = useStyles();
   if (err1) {
-    return <h1>Please Enter a Valid Location</h1>;
+    return (
+      <Container style={{ marginTop: "1%" }}>
+        <Alert variant="filled" severity="error">
+          <AlertTitle>Error</AlertTitle>
+          Please Enter a Valid Location :
+        </Alert>
+      </Container>
+    );
   } else {
     return (
       <Card
