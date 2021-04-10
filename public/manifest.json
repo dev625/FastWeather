@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Fast Weather",
+  "name": "Weather at your Fingertips!",
   "icons": [
     {
       "src": "cloudy.png",
