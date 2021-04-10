@@ -32,7 +32,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log(loc);
-    const url = `http://api.weatherapi.com/v1/current.json?key=${apikey}&q=${loc}&aqi=yes`;
+    const url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${loc}&aqi=yes`;
     const foo = await fetch(url);
     const data = await foo.json();
     if (data.hasOwnProperty("error")) {
