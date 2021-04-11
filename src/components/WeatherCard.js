@@ -21,8 +21,10 @@ const WeatherCard = ({ weather, err1 }) => {
     return (
       <Container style={{ marginTop: "1%" }}>
         <Alert variant="filled" severity="error">
-          <AlertTitle style={{ fontSize: 14 }}>Error</AlertTitle>
-          Please Enter a Valid Location
+          <AlertTitle style={{ fontSize: 14 }}>
+            <h1>ERROR</h1>
+          </AlertTitle>
+          <h2>PLEASE ENTER A VALID LOCATION</h2>
         </Alert>
       </Container>
     );
@@ -41,6 +43,7 @@ const WeatherCard = ({ weather, err1 }) => {
             <div>
               <img
                 src={weather.current.condition.icon}
+                alt="Icon Displaying Current Weather"
                 style={{ backgroundColor: "white", borderRadius: "50%" }}
               />
             </div>

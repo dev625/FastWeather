@@ -1,7 +1,7 @@
 import "./App.css";
 import Header from "./components/Header.js";
 import WeatherCard from "./components/WeatherCard";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 import {
   Container,
@@ -35,7 +35,6 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log(loc);
     const url = `https://api.weatherapi.com/v1/current.json?key=${apikey}&q=${loc}&aqi=yes`;
     const foo = await fetch(url);
     const data = await foo.json();
@@ -49,15 +48,11 @@ function App() {
     }
   };
 
-  useEffect(() => {
-    console.log(weather);
-  }, [weather]);
-
   return (
     <Container>
       <Header />
       <Container align="center">
-        <form onSubmit={(console.log("hello"), handleSubmit)}>
+        <form onSubmit={handleSubmit}>
           <InputLabel>Well, You do need to enter your location. </InputLabel>
           <TextField
             htmlFor="location"
