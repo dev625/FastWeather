@@ -1,7 +1,8 @@
 import "./App.css";
 import Header from "./components/Header.js";
 import WeatherCard from "./components/WeatherCard";
-import React, { Fragment, useState, useEffect } from "react";
+import React, { useState, useEffect } from "react";
+
 import {
   Container,
   InputLabel,
@@ -9,6 +10,7 @@ import {
   Button,
   makeStyles,
 } from "@material-ui/core";
+
 const { apikey } = require("./api/keys");
 
 const useStyles = makeStyles({
@@ -23,10 +25,12 @@ const useStyles = makeStyles({
     marginTop: "5%",
   },
 });
+
 function App() {
   const [loc, setLoc] = useState("");
-  const [err1, setErr1] = useState(true);
+  const [err1, setErr1] = useState(false);
   const [weather, setWeather] = useState({});
+  const [submit, setSubmit] = useState(false);
   const classes = useStyles();
 
   const handleSubmit = async (e) => {
@@ -37,9 +41,11 @@ function App() {
     const data = await foo.json();
     if (data.hasOwnProperty("error")) {
       setErr1(true);
+      setSubmit(true);
     } else {
       setWeather(data);
       setErr1(false);
+      setSubmit(true);
     }
   };
 
@@ -51,7 +57,7 @@ function App() {
     <Container>
       <Header />
       <Container align="center">
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={(console.log("hello"), handleSubmit)}>
           <InputLabel>Well, You do need to enter your location. </InputLabel>
           <TextField
             htmlFor="location"
@@ -73,11 +79,7 @@ function App() {
       </Container>
 
       <Container>
-        {Object.keys(weather).length !== 0 ? (
-          <WeatherCard weather={weather} err1={err1} />
-        ) : (
-          ""
-        )}
+        {submit === true ? <WeatherCard weather={weather} err1={err1} /> : ""}
       </Container>
     </Container>
   );

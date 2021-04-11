@@ -21,8 +21,8 @@ const WeatherCard = ({ weather, err1 }) => {
     return (
       <Container style={{ marginTop: "1%" }}>
         <Alert variant="filled" severity="error">
-          <AlertTitle>Error</AlertTitle>
-          Please Enter a Valid Location :
+          <AlertTitle style={{ fontSize: 14 }}>Error</AlertTitle>
+          Please Enter a Valid Location
         </Alert>
       </Container>
     );
