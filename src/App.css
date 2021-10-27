@@ -1,8 +1,14 @@
-@font-face {
+/* @font-face {
   font-family: custom1;
   src: url("./fonts/custom1.ttf");
 }
 
 * {
   font-family: custom1;
+} */
+
+* {
+  font-family: 'SourceSansProRegular';
+  font-weight: bold;
+  font-style: normal;
 }
